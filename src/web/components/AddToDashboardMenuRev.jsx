@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { ButtonGroup, DropdownButton, MenuItem } from 'react-bootstrap';
 import Immutable from 'immutable';
 
@@ -10,8 +11,11 @@ const WidgetsStore = StoreProvider.getStore('Widgets');
 import PermissionsMixin from 'util/PermissionsMixin';
 import { WidgetCreationModal } from 'components/widgets';
 import { EditDashboardModal } from 'components/dashboard';
+import CreateReactClass from 'create-react-class';
 
-const AddToDashboardMenuRev = React.createClass({
+
+
+const AddToDashboardMenuRev = CreateReactClass({
   propTypes: {
     widgetType: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,

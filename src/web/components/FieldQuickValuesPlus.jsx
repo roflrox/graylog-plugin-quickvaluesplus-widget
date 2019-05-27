@@ -1,24 +1,24 @@
-import React, {PropTypes} from 'react';
-import ReactDOM from 'react-dom';
-import {Button, DropdownButton, MenuItem} from 'react-bootstrap';
+import React from 'react';
 import Reflux from 'reflux';
-
+import PropTypes from 'prop-types';
 import QuickValuesPlusVisualization from 'components/QuickValuesPlusVisualization';
 import AddToDashboardMenuRev from 'components/AddToDashboardMenuRev';
 import Spinner from 'components/common/Spinner';
 import StringUtils from 'util/StringUtils';
+import { Button, DropdownButton } from 'react-bootstrap';
 import UIUtils from 'util/UIUtils';
 import StoreProvider from 'injection/StoreProvider';
 import { QuickValuesPlusActions, QuickValuesPlusStore } from  'stores/QuickValuesPlusStore';
 const ConfigurationsStore = StoreProvider.getStore('Configurations');
 import ActionsProvider from 'injection/ActionsProvider';
 const ConfigurationActions = ActionsProvider.getActions('Configuration');
+import CreateReactClass from 'create-react-class';
 
 import style from '!style/useable!css!./FieldQuickValuesPlus.css';
 
 const RefreshStore = StoreProvider.getStore('Refresh');
 
-const FieldQuickValuesPlus = React.createClass({
+const FieldQuickValuesPlus = CreateReactClass({
     propTypes: {
         permissions: PropTypes.arrayOf(PropTypes.string).isRequired,
         dashboard_id: PropTypes.string,

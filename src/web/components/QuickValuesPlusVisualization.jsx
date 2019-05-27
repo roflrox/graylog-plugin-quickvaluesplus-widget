@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Immutable from 'immutable';
 import { Button, Panel, ListGroup, ListGroupItem, LinkContainer } from 'react-bootstrap';
 import crossfilter from 'crossfilter';
@@ -20,8 +21,9 @@ const CurrentUserStore = StoreProvider.getStore('CurrentUser');
 const WidgetsStore = StoreProvider.getStore('Widgets');
 const SearchStore = StoreProvider.getStore('Search');
 import Routes from 'routing/Routes';
+import CreateReactClass from 'create-react-class';
 
-const QuickValuesPlusVisualization = React.createClass({
+const QuickValuesPlusVisualization = CreateReactClass({
     mixins: [Reflux.connect(CurrentUserStore), PermissionsMixin],
     propTypes: {
         id: PropTypes.string,

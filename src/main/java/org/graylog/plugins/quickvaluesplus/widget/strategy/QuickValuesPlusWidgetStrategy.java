@@ -26,6 +26,8 @@ import org.graylog2.indexer.searches.Sorting;
 import org.graylog2.plugin.dashboards.widgets.ComputationResult;
 import org.graylog2.plugin.dashboards.widgets.WidgetStrategy;
 import org.graylog2.plugin.indexer.searches.timeranges.TimeRange;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Nullable;
 import java.util.Map;
@@ -33,6 +35,8 @@ import java.util.Map;
 import static com.google.common.base.Strings.isNullOrEmpty;
 
 public class QuickValuesPlusWidgetStrategy implements WidgetStrategy {
+
+    private static final Logger LOG = LoggerFactory.getLogger(QuickValuesPlusWidgetStrategy.class);
 
     public interface Factory extends WidgetStrategy.Factory<QuickValuesPlusWidgetStrategy> {
         @Override
@@ -68,6 +72,7 @@ public class QuickValuesPlusWidgetStrategy implements WidgetStrategy {
 
     @Override
     public ComputationResult compute() {
+
         String filter = null;
         if (!isNullOrEmpty(streamId)) {
             filter = "streams:" + streamId;
@@ -82,7 +87,7 @@ public class QuickValuesPlusWidgetStrategy implements WidgetStrategy {
         result.put("total", terms.getTotal());
         result.put("other", terms.getOther());
         result.put("missing", terms.getMissing());
-
+        LOG.debug("creating new ComputationEesult");
         return new ComputationResult(result, terms.tookMs());
     }
 
