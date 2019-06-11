@@ -5,7 +5,7 @@ const fetch = require('logic/rest/FetchProvider').default;
 const UserNotification = require('util/UserNotification');
 const ApiRoutes = require('routing/ApiRoutes');
 const URLUtils = require('util/URLUtils');
-const StoreProvider = require('injection/StoreProvider');
+import StoreProvider from 'injection/StoreProvider';
 const SearchStore = StoreProvider.getStore('Search');
 
 export const QuickValuesPlusActions = Reflux.createActions({
@@ -34,7 +34,8 @@ export const QuickValuesPlusStore = Reflux.createStore({
                 timerange['keyword'] = originalSearchURLParams.get('keyword');
                 break;
         }
-        let url = ApiRoutes.UniversalSearchApiController.fieldTerms(rangeType, originalSearchURLParams.get('q') || '*', field, timerange, streamId).url;
+        //type, query, field, order, size, stackedFields, timerange, streamId
+        let url = ApiRoutes.UniversalSearchApiController.fieldTerms(rangeType, originalSearchURLParams.get('q') || '*', field, 'desc', 5,'', timerange, streamId).url;
         url = URLUtils.qualifyUrl(url);
 
         // If it was set, append the optional Size parameter to the query.

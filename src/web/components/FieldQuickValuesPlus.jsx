@@ -1,6 +1,7 @@
 import React from 'react';
 import Reflux from 'reflux';
 import PropTypes from 'prop-types';
+import ReactDOM from 'react-dom';
 import QuickValuesPlusVisualization from 'components/QuickValuesPlusVisualization';
 import AddToDashboardMenuRev from 'components/AddToDashboardMenuRev';
 import Spinner from 'components/common/Spinner';
@@ -158,7 +159,7 @@ const FieldQuickValuesPlus = CreateReactClass({
                     loaded: true,
                 });
                 if (this.refs.thedash !== undefined) {
-                    this.refs.thedash.refs.widgetModal.setState({
+                    /*this.refs.thedash.refs.widgetModal.setState({
                         config: {
                             top_values: this.state.configuration['org.graylog.plugins.quickvaluesplus.QuickValuesPlusPluginConfiguration3_1'].top_values,
                             sort_order: this.state.configuration['org.graylog.plugins.quickvaluesplus.QuickValuesPlusPluginConfiguration3_1'].sort_order,
@@ -169,7 +170,7 @@ const FieldQuickValuesPlus = CreateReactClass({
                             display_exclude_from_query_button: this.state.configuration['org.graylog.plugins.quickvaluesplus.QuickValuesPlusPluginConfiguration3_1'].display_exclude_from_query_button,
                             display_get_term_reply_in_new_window_button: this.state.configuration['org.graylog.plugins.quickvaluesplus.QuickValuesPlusPluginConfiguration3_1'].display_get_term_reply_in_new_window_button
                         }
-                    });
+                    }); */
                 }
             } else {
                 this.setState({
